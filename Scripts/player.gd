@@ -23,7 +23,7 @@ func _input(event: InputEvent) -> void:
 	match current_state:
 		STATE.IDLE:
 			if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
-					current_state = STATE.WALK
+				current_state = STATE.WALK
 			elif Input.is_action_pressed("jump"):
 				current_state = STATE.JUMP
 		STATE.WALK:
@@ -32,16 +32,17 @@ func _input(event: InputEvent) -> void:
 			elif Input.is_action_pressed("jump"):
 				current_state = STATE.JUMP
 
-
 func _physics_process(delta: float) -> void:
 	match  current_state:
 		STATE.IDLE:
 			velocity.x = 0
 			$Animations.play("idle")
 		STATE.WALK:
+			flip()
 			velocity.x = Input.get_axis("left", "right") * SPEED
 			$Animations.play("walk")
 		STATE.JUMP:
+			flip()
 			$Animations.play("jump")
 			velocity.x = Input.get_axis("left", "right") * SPEED
 			if is_on_floor() and velocity.y >= 0:
@@ -49,6 +50,7 @@ func _physics_process(delta: float) -> void:
 			if velocity.y > 0:
 				current_state = STATE.FALL
 		STATE.FALL:
+			flip()
 			$Animations.play("fall")
 			velocity.x = Input.get_axis("left", "right") * SPEED
 			if velocity.y >= 0 and is_on_floor():
@@ -56,15 +58,12 @@ func _physics_process(delta: float) -> void:
 					current_state = STATE.WALK
 				else:
 					current_state = STATE.IDLE
+				
 		STATE.HURT:
 			$Animations.play("hurt")
+		
 		STATE.DIE:
 			$Animations.play("die")
-	
-	if Input.is_action_pressed("left"):
-		$Sprites.flip_h = true
-	elif Input.is_action_pressed("right"):
-		$Sprites.flip_h = false
 	
 	handle_gravity(delta)
 	move_and_slide()
@@ -74,3 +73,14 @@ func handle_gravity(delta):
 
 func finish_animation():
 	current_state = STATE.IDLE
+
+func hurt():
+	current_state = STATE.HURT
+
+func flip():
+	if Input.is_action_pressed("left"):
+		$HitBox.position.x = -2
+		$Sprites.flip_h = true
+	elif Input.is_action_pressed("right"):
+		$HitBox.position.x = 2
+		$Sprites.flip_h = false
