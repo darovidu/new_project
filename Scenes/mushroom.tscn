@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://1webdmyw01mh"]
+
+[ext_resource type="Texture2D" uid="uid://c01vpg0xw255a" path="res://Assets/Enemigos/Mushroom/Mushroom_1/Walk/Walk_L_1.png" id="1_8wxru"]
+[ext_resource type="Script" uid="uid://bjm1npvnnxefx" path="res://Scripts/mushroom.gd" id="1_c6w58"]
+[ext_resource type="Texture2D" uid="uid://cx8hfrfljt8uo" path="res://Assets/Enemigos/Mushroom/Mushroom_1/Walk/Walk_L_2.png" id="2_c6w58"]
+[ext_resource type="Texture2D" uid="uid://dlvee0047q8db" path="res://Assets/Enemigos/Mushroom/Mushroom_1/Walk/Walk_L_3.png" id="3_aktc8"]
+[ext_resource type="Texture2D" uid="uid://bpalocx2skepn" path="res://Assets/Enemigos/Mushroom/Mushroom_1/Walk/Walk_L_4.png" id="4_g77dt"]
+[ext_resource type="Texture2D" uid="uid://d7bh4ihjo8oq" path="res://Assets/Enemigos/Mushroom/Mushroom_1/Walk/Walk_R_1.png" id="6_2i6dj"]
+[ext_resource type="Texture2D" uid="uid://b3r0pku5wwapj" path="res://Assets/Enemigos/Mushroom/Mushroom_1/Walk/Walk_R_2.png" id="7_s8vh8"]
+[ext_resource type="Texture2D" uid="uid://bq365diidayb" path="res://Assets/Enemigos/Mushroom/Mushroom_1/Walk/Walk_R_3.png" id="8_2jrhu"]
+[ext_resource type="Texture2D" uid="uid://c0ryupfpxopjc" path="res://Assets/Enemigos/Mushroom/Mushroom_1/Walk/Walk_R_4.png" id="9_krudx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w81ou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8wxru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c6w58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aktc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g77dt")
+}],
+"loop": 1,
+"name": &"walk_L_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2i6dj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s8vh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2jrhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_krudx")
+}],
+"loop": 1,
+"name": &"walk_R_1",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_4qdqy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_L_1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2i6dj"]
+resource_name = "walk_L_1"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_L_1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.73333335, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_5r5le"]
+resource_name = "walk_R_1"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk_R_1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.73333335, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8vh8"]
+_data = {
+&"RESET": SubResource("Animation_4qdqy"),
+&"walk_L_1": SubResource("Animation_2i6dj"),
+&"walk_R_1": SubResource("Animation_5r5le")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w81ou"]
+size = Vector2(10, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vqkf"]
+size = Vector2(8, 13)
+
+[node name="Mushroom" type="CharacterBody2D" unique_id=1392489745]
+collision_layer = 4
+collision_mask = 14
+script = ExtResource("1_c6w58")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=1778133779]
+sprite_frames = SubResource("SpriteFrames_w81ou")
+animation = &"walk_L_1"
+
+[node name="Animations" type="AnimationPlayer" parent="." unique_id=82951776]
+libraries/ = SubResource("AnimationLibrary_s8vh8")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=74623989]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_w81ou")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=768774657]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1512249763]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_8vqkf")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

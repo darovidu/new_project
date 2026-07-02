@@ -7,6 +7,7 @@ var direction = -1
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_state:STATE = STATE.WALK
 var angry:bool = false
+var fast_explode:bool = true
 
 enum STATE {
 	WALK,
@@ -34,7 +35,7 @@ func _physics_process(delta: float) -> void:
 			
 			velocity.x = direction * speed
 			
-			if $RayCastTile.is_colliding():
+			if is_on_wall():
 				if angry:
 					current_state = STATE.EXPLODE
 				else:
@@ -48,18 +49,19 @@ func _physics_process(delta: float) -> void:
 			if direction == 1:
 				$Animations.play("turn_R")
 				direction = -1
-				$RayCastTile.target_position.x = -4
 				$RayCastPlayer.target_position.x = -108
 			else:
 				$Animations.play("turn_L")
 				direction = 1
-				$RayCastTile.target_position.x = 5
 				$RayCastPlayer.target_position.x = 108
 			
 			current_state = STATE.WALK
 		
 		STATE.EXPLODE:
-			$Animations.play("explode")
+			if fast_explode:
+				$Animations.play("fast_explode")
+			else:
+				$Animations.play("explode")
 	
 	move_and_slide()
 	
@@ -73,4 +75,11 @@ func _on_timer_ray_cast_timeout() -> void:
 	angry = false
 
 func _on_explosion_body_entered(body: Node2D) -> void:
-	body.hurt()
+	if body.is_in_group("player"):
+		body.hurt()
+	else:
+		body.death()
+
+func death():
+	fast_explode = false
+	current_state = STATE.EXPLODE

@@ -368,6 +368,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_x3wgy"]
 resource_name = "attack"
@@ -395,6 +407,32 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.88),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish_animation"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_qpa8y"]
@@ -595,7 +633,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vqkf"]
 size = Vector2(6, 11)
 
-[node name="Player" type="CharacterBody2D" unique_id=1492960844]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w81ou"]
+size = Vector2(6, 7)
+
+[node name="Player" type="CharacterBody2D" unique_id=1492960844 groups=["player"]]
 collision_mask = 2
 script = ExtResource("1_cvnsp")
 
@@ -613,3 +654,14 @@ shape = SubResource("RectangleShape2D_8vqkf")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=48798646]
 zoom = Vector2(2.5, 2.5)
+
+[node name="Attack" type="Area2D" parent="." unique_id=1668161641]
+collision_layer = 32
+collision_mask = 4
+monitoring = false
+
+[node name="HurtBox" type="CollisionShape2D" parent="Attack" unique_id=584799313]
+position = Vector2(10, 7.5)
+shape = SubResource("RectangleShape2D_w81ou")
+
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
