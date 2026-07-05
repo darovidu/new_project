@@ -76,7 +76,7 @@ func _on_timer_ray_cast_timeout() -> void:
 
 func _on_explosion_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body.hurt()
+		body.hurt(2)
 	else:
 		body.death()
 

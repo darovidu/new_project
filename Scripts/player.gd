@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var life:int = 3
 
 enum STATE {
 	IDLE,
@@ -80,6 +81,11 @@ func _physics_process(delta: float) -> void:
 		STATE.DIE:
 			$Animations.play("die")
 	
+	if life <= 0:
+		current_state = STATE.DIE
+	
+	set_meta("coordenadas", Vector2(global_position.x, global_position.y))
+	
 	handle_gravity(delta)
 	move_and_slide()
 
@@ -89,7 +95,11 @@ func handle_gravity(delta):
 func finish_animation():
 	current_state = STATE.IDLE
 
-func hurt():
+func heal(healthUp):
+	life += healthUp
+
+func hurt(damage):
+	life -= damage
 	current_state = STATE.HURT
 
 func flip():

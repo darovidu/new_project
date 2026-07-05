@@ -437,7 +437,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_qpa8y"]
 resource_name = "die"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -639,6 +638,7 @@ size = Vector2(6, 7)
 [node name="Player" type="CharacterBody2D" unique_id=1492960844 groups=["player"]]
 collision_mask = 2
 script = ExtResource("1_cvnsp")
+metadata/coordenadas = Vector2(0, 0)
 
 [node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=694017763]
 sprite_frames = SubResource("SpriteFrames_w81ou")

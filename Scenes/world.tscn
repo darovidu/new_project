@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dldhx08jjkl3o" path="res://Assets/TileSet/midground_/spring_.png" id="2_8j60k"]
 [ext_resource type="PackedScene" uid="uid://c6fbyhw4u2wrx" path="res://Scenes/player.tscn" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://c50j00fkyqanx" path="res://Scenes/coin.tscn" id="3_5ukr8"]
-[ext_resource type="PackedScene" uid="uid://em1b71f5qjsh" path="res://Scenes/bomb.tscn" id="4_fo5ed"]
-[ext_resource type="PackedScene" uid="uid://1webdmyw01mh" path="res://Scenes/mushroom.tscn" id="5_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://xuu5g5guf4pb" path="res://Scenes/bee.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://dp3ccti2meovt" path="res://Scenes/heart.tscn" id="7_o06y3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fo5ed"]
 texture = ExtResource("1_5a7ea")
@@ -260,15 +260,15 @@ tile_set = SubResource("TileSet_w81ou")
 [node name="Coin2" parent="." unique_id=543076919 instance=ExtResource("3_5ukr8")]
 position = Vector2(103, 184)
 
-[node name="Player" parent="." unique_id=1492960844 instance=ExtResource("2_go701")]
-position = Vector2(92, 222)
-
 [node name="Spring" type="Sprite2D" parent="." unique_id=1269367715]
 position = Vector2(806, 195)
 texture = ExtResource("2_8j60k")
 
-[node name="Mushroom" parent="." unique_id=1392489745 instance=ExtResource("5_fo5ed")]
-position = Vector2(359, 219)
+[node name="Heart" parent="." unique_id=97636273 instance=ExtResource("7_o06y3")]
+position = Vector2(38, 185)
 
-[node name="Bomb" parent="." unique_id=2085252637 instance=ExtResource("4_fo5ed")]
-position = Vector2(271, 224)
+[node name="Player" parent="." unique_id=1492960844 instance=ExtResource("2_go701")]
+position = Vector2(66, 214)
+
+[node name="Bee" parent="." unique_id=1242242619 instance=ExtResource("6_5ukr8")]
+position = Vector2(311, 176)

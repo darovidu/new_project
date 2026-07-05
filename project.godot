@@ -51,6 +51,9 @@ attack={
 2d_physics/layer_4="explosion"
 2d_physics/layer_5="coin"
 2d_physics/layer_6="attack"
+2d_physics/layer_7="heart"
+2d_physics/layer_8="detectionArea"
+2d_physics/layer_9="bullet"
 
 [physics]
 
