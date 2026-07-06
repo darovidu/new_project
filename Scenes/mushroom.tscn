@@ -142,10 +142,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w81ou"]
 size = Vector2(10, 15)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vqkf"]
-size = Vector2(8, 13)
-
-[node name="Mushroom" type="CharacterBody2D" unique_id=1392489745]
+[node name="Mushroom" type="CharacterBody2D" unique_id=1392489745 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 14
 script = ExtResource("1_c6w58")
@@ -161,10 +158,4 @@ libraries/ = SubResource("AnimationLibrary_s8vh8")
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_w81ou")
 
-[node name="HurtBox" type="Area2D" parent="." unique_id=768774657]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1512249763]
-position = Vector2(0, 4.5)
-shape = SubResource("RectangleShape2D_8vqkf")
-
-[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[node name="Area2D" type="Area2D" parent="." unique_id=55471799]

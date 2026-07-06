@@ -35,7 +35,3 @@ func turn():
 
 func death():
 	queue_free()
-
-func _on_hurt_box_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		body.hurt(1)

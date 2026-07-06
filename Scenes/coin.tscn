@@ -157,8 +157,8 @@ _data = {
 &"default": SubResource("Animation_m55n1")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vqkf"]
-size = Vector2(8, 8)
+[sub_resource type="CircleShape2D" id="CircleShape2D_jgi06"]
+radius = 5.0
 
 [node name="Coin" type="Area2D" unique_id=543076919]
 collision_layer = 16
@@ -171,7 +171,7 @@ sprite_frames = SubResource("SpriteFrames_w81ou")
 libraries/ = SubResource("AnimationLibrary_wm60r")
 autoplay = &"default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=775791243]
-shape = SubResource("RectangleShape2D_8vqkf")
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=775791243]
+shape = SubResource("CircleShape2D_jgi06")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

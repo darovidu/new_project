@@ -4,7 +4,7 @@ class_name Player extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-
+var iframes = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var life:int = 3
 
@@ -75,8 +75,11 @@ func _physics_process(delta: float) -> void:
 			$Animations.play("attack")
 			
 		STATE.HURT:
+			iframes = true
 			velocity.x = 0
 			$Animations.play("hurt")
+			await($Animations.animation_finished)
+			$Timer.start()
 		
 		STATE.DIE:
 			$Animations.play("die")
@@ -84,7 +87,13 @@ func _physics_process(delta: float) -> void:
 	if life <= 0:
 		current_state = STATE.DIE
 	
-	set_meta("coordenadas", Vector2(global_position.x, global_position.y))
+	
+	var collision
+	for i in get_slide_collision_count():
+		collision = get_slide_collision(i)
+		for j in get_tree().get_nodes_in_group("enemy"):
+			if collision.get_collider() == j:
+				hurt(1)
 	
 	handle_gravity(delta)
 	move_and_slide()
@@ -99,8 +108,10 @@ func heal(healthUp):
 	life += healthUp
 
 func hurt(damage):
-	life -= damage
-	current_state = STATE.HURT
+	if iframes == false:
+		life -= damage
+		print(life)
+		current_state = STATE.HURT
 
 func flip():
 	if Input.is_action_pressed("left"):
@@ -114,3 +125,7 @@ func flip():
 
 func _on_attack_body_entered(body: Node2D) -> void:
 	body.death()
+
+func _on_timer_timeout() -> void:
+	iframes = false
+	print("a")
