@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d0hrkbqgtskyc"]
+
+[ext_resource type="Script" uid="uid://4w3kckd0px1e" path="res://Scripts/key.gd" id="1_udxw8"]
+[ext_resource type="Texture2D" uid="uid://dydpuyy4vk8rd" path="res://Assets/Objetos/items_.png" id="1_ut0wq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w81ou"]
+atlas = ExtResource("1_ut0wq")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w81ou"]
+size = Vector2(8, 14)
+
+[node name="Key" type="Area2D" unique_id=795387163]
+collision_layer = 16
+script = ExtResource("1_udxw8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=106480624]
+texture = SubResource("AtlasTexture_w81ou")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=434501679]
+shape = SubResource("RectangleShape2D_w81ou")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

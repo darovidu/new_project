@@ -49,11 +49,14 @@ attack={
 2d_physics/layer_2="tile"
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="explosion"
-2d_physics/layer_5="coin"
+2d_physics/layer_5="object"
 2d_physics/layer_6="attack"
-2d_physics/layer_7="heart"
+2d_physics/layer_7="door"
 2d_physics/layer_8="detectionArea"
 2d_physics/layer_9="bullet"
+2d_physics/layer_10="block"
+2d_physics/layer_11="tile2"
+2d_physics/layer_12="hurtZone"
 
 [physics]
 

@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bn0d8anh85tyo"]
+
+[ext_resource type="Script" uid="uid://byx1a3xadpqda" path="res://Scripts/level_complete.gd" id="1_nqaca"]
+[ext_resource type="Texture2D" uid="uid://dwagxhjrt5ita" path="res://Assets/Objetos/coin_.png" id="1_onuut"]
+[ext_resource type="Texture2D" uid="uid://cw33joo2hoi3g" path="res://Assets/UI/button UI.png" id="2_nqaca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w81ou"]
+atlas = ExtResource("1_onuut")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vqkf"]
+atlas = ExtResource("1_onuut")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpdhx"]
+atlas = ExtResource("1_onuut")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jggmm"]
+atlas = ExtResource("2_nqaca")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keli0"]
+atlas = ExtResource("2_nqaca")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lek5h"]
+atlas = ExtResource("2_nqaca")
+region = Rect2(0, 32, 16, 16)
+
+[node name="LevelComplete" type="CanvasLayer" unique_id=1083600346]
+script = ExtResource("1_nqaca")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1862396145]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=383915552]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1470288037]
+layout_mode = 2
+text = "LEVEL COMPLETE!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=727171038]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=2027222448]
+layout_mode = 2
+texture = SubResource("AtlasTexture_w81ou")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1991261872]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8vqkf")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=572482149]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mpdhx")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=815111718]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1342325835]
+layout_mode = 2
+icon = SubResource("AtlasTexture_jggmm")
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1695243012]
+layout_mode = 2
+icon = SubResource("AtlasTexture_keli0")
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=261030164]
+layout_mode = 2
+icon = SubResource("AtlasTexture_lek5h")

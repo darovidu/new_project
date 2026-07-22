@@ -2,11 +2,14 @@ class_name Player extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -350.0
+
+signal coin_signal
 
 var iframes = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var life:int = 3
+var safe_position:Vector2 = Vector2.ZERO
 
 enum STATE {
 	IDLE,
@@ -26,7 +29,7 @@ func _input(event: InputEvent) -> void:
 		STATE.IDLE:
 			if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 				current_state = STATE.WALK
-			elif Input.is_action_pressed("jump"):
+			elif Input.is_action_just_pressed("jump"):
 				current_state = STATE.JUMP
 			elif Input.is_action_pressed("attack"):
 				current_state = STATE.ATTACK
@@ -44,10 +47,16 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 			$Animations.play("idle")
 			
+			if not is_on_floor():
+				current_state = STATE.FALL
+			
 		STATE.WALK:
 			flip()
 			velocity.x = Input.get_axis("left", "right") * SPEED
 			$Animations.play("walk")
+			
+			if not is_on_floor():
+				current_state = STATE.FALL
 			
 		STATE.JUMP:
 			$HitBox.position.y = 0.5
@@ -78,8 +87,8 @@ func _physics_process(delta: float) -> void:
 			iframes = true
 			velocity.x = 0
 			$Animations.play("hurt")
-			await($Animations.animation_finished)
-			$Timer.start()
+			#$Timer.start()
+			#current_state = STATE.IDLE
 		
 		STATE.DIE:
 			$Animations.play("die")
@@ -87,13 +96,19 @@ func _physics_process(delta: float) -> void:
 	if life <= 0:
 		current_state = STATE.DIE
 	
+	if is_on_floor():
+		safe_position = position
+		if Input.is_action_pressed("left"):
+			safe_position.x += 10
+		elif Input.is_action_pressed("right"):
+			safe_position.x -= 10
 	
-	var collision
-	for i in get_slide_collision_count():
-		collision = get_slide_collision(i)
-		for j in get_tree().get_nodes_in_group("enemy"):
-			if collision.get_collider() == j:
-				hurt(1)
+	#var collision
+	#for i in get_slide_collision_count():
+		#collision = get_slide_collision(i)
+		#for j in get_tree().get_nodes_in_group("enemy"):
+			#if collision.get_collider() == j:
+				#hurt(1)
 	
 	handle_gravity(delta)
 	move_and_slide()
@@ -102,6 +117,7 @@ func handle_gravity(delta):
 	velocity.y += gravity * delta
 
 func finish_animation():
+	print(life)
 	current_state = STATE.IDLE
 
 func heal(healthUp):
@@ -110,17 +126,19 @@ func heal(healthUp):
 func hurt(damage):
 	if iframes == false:
 		life -= damage
-		print(life)
 		current_state = STATE.HURT
+
+func coin():
+	coin_signal.emit()
 
 func flip():
 	if Input.is_action_pressed("left"):
 		$HitBox.position.x = -2
-		$Attack/HurtBox.position.x = -10
+		$Attack/HurtBox.position.x = -13.5
 		$Sprites.flip_h = true
 	elif Input.is_action_pressed("right"):
 		$HitBox.position.x = 2
-		$Attack/HurtBox.position.x = 10
+		$Attack/HurtBox.position.x = 13.5
 		$Sprites.flip_h = false
 
 func _on_attack_body_entered(body: Node2D) -> void:
@@ -129,3 +147,7 @@ func _on_attack_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	iframes = false
 	print("a")
+
+func _on_hurt_zone_body_entered(body: Node2D) -> void:
+	position = safe_position
+	life -= 1

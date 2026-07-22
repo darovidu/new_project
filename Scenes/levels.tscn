@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://fjy62yb35fjg"]
+
+[node name="Levels" type="CanvasLayer" unique_id=2123419127]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=621007154]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.5
+offset_top = -31.0
+offset_right = 60.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=633596358]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer" unique_id=247029655]
+layout_mode = 2
+columns = 5
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1370102543]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "1"
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1023206720]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "2"
+
+[node name="Label3" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=211793599]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "3"
+
+[node name="Label4" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1973998454]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "4"
+
+[node name="Label5" type="Label" parent="PanelContainer/MarginContainer/GridContainer" unique_id=1344163988]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "5"

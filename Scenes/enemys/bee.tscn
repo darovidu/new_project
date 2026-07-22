@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://xuu5g5guf4pb"]
+
+[ext_resource type="Script" uid="uid://bhtrkjuhpf8ix" path="res://Scripts/Enemys/bee.gd" id="1_2af24"]
+[ext_resource type="Texture2D" uid="uid://dq4qoj2wv6iu3" path="res://Assets/Enemigos/Bee/Idle/Idle_5_L_1.png" id="1_qxbm7"]
+[ext_resource type="Texture2D" uid="uid://c7bpd81l7ff8o" path="res://Assets/Enemigos/Bee/Idle/Idle_5_L_2.png" id="2_2af24"]
+[ext_resource type="Texture2D" uid="uid://bdl0dho6wjr6a" path="res://Assets/Enemigos/Bee/Attack_1/Attack_1_L_1.png" id="2_vhu46"]
+[ext_resource type="Texture2D" uid="uid://bhcutn1irytjd" path="res://Assets/Enemigos/Bee/Idle/Idle_5_L_3.png" id="3_34vqf"]
+[ext_resource type="Texture2D" uid="uid://c8wbqfc0xwcmw" path="res://Assets/Enemigos/Bee/Attack_1/Attack_1_L_2.png" id="3_u3t42"]
+[ext_resource type="Texture2D" uid="uid://b45ugslleybot" path="res://Assets/Enemigos/Bee/Attack_1/Attack_1_L_3.png" id="4_acc7d"]
+[ext_resource type="Texture2D" uid="uid://b4vdu5yanqygn" path="res://Assets/Enemigos/Bee/Idle/Idle_5_L_4.png" id="4_tcj77"]
+[ext_resource type="Texture2D" uid="uid://cj4nc5uk05885" path="res://Assets/Enemigos/Bee/Attack_1/Attack_1_L_4.png" id="5_a8hal"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w81ou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vhu46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_u3t42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_acc7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a8hal")
+}],
+"loop": 1,
+"name": &"attack_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qxbm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2af24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_34vqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tcj77")
+}],
+"loop": 1,
+"name": &"idle_L",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yt8gv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_L"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_i71ia"]
+resource_name = "attack_L"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack_L"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_vhu46"]
+resource_name = "idle_L"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_L"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3t42"]
+_data = {
+&"RESET": SubResource("Animation_yt8gv"),
+&"attack_L": SubResource("Animation_i71ia"),
+&"idle_L": SubResource("Animation_vhu46")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w81ou"]
+size = Vector2(10, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w81ou"]
+radius = 75.0
+
+[node name="Bee" type="CharacterBody2D" unique_id=1242242619]
+collision_layer = 4
+script = ExtResource("1_2af24")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="." unique_id=1605382825]
+sprite_frames = SubResource("SpriteFrames_w81ou")
+animation = &"idle_L"
+
+[node name="Animations" type="AnimationPlayer" parent="." unique_id=1753516788]
+libraries/ = SubResource("AnimationLibrary_u3t42")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=43971259]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_w81ou")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1297661963]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=124439214]
+shape = SubResource("CircleShape2D_w81ou")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1204131367]
+position = Vector2(0, 5)
+
+[node name="Timer" type="Timer" parent="." unique_id=36577422]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

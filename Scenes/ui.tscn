@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://d241i0j4w0vcg"]
+
+[ext_resource type="Script" uid="uid://cwc231e8w8exw" path="res://Scripts/ui.gd" id="1_nf4gj"]
+[ext_resource type="Texture2D" uid="uid://dydpuyy4vk8rd" path="res://Assets/Objetos/items_.png" id="1_qdvrb"]
+[ext_resource type="Texture2D" uid="uid://dwagxhjrt5ita" path="res://Assets/Objetos/coin_.png" id="2_nf4gj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w81ou"]
+atlas = ExtResource("1_qdvrb")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vqkf"]
+atlas = ExtResource("2_nf4gj")
+region = Rect2(0, 0, 16, 16)
+
+[node name="UI" type="CanvasLayer" unique_id=1561321160]
+script = ExtResource("1_nf4gj")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=444738216]
+offset_right = 56.0
+offset_bottom = 43.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1342235319]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=75855463]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1135948663]
+layout_mode = 2
+texture = SubResource("AtlasTexture_w81ou")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=664446520]
+layout_mode = 2
+texture = SubResource("AtlasTexture_w81ou")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1644895459]
+layout_mode = 2
+texture = SubResource("AtlasTexture_w81ou")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=193495393]
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1525452856]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8vqkf")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=147100994]
+layout_mode = 2
+text = "0"
