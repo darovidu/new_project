@@ -21,5 +21,4 @@ func _on_body_entered(body: Node2D) -> void:
 
 func destroy():
 	tween.stop()
-	#tween.tween_callback(queue_free)
 	queue_free()

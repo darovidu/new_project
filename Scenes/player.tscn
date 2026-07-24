@@ -326,7 +326,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_36dho")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -366,7 +366,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_11gg7")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -776,5 +776,6 @@ one_shot = true
 [node name="UI" parent="." unique_id=1561321160 instance=ExtResource("3_6t5aa")]
 
 [connection signal="coin_signal" from="." to="UI" method="_on_player_coin_signal"]
+[connection signal="hurt_signal" from="." to="UI" method="_on_player_hurt_signal"]
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -16,34 +16,43 @@ region = Rect2(0, 0, 16, 16)
 script = ExtResource("1_nf4gj")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=444738216]
-offset_right = 56.0
-offset_bottom = 43.0
+offset_right = 183.0
+offset_bottom = 146.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1342235319]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=75855463]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1135948663]
+[node name="Heart1" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1135948663]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_w81ou")
 
-[node name="TextureRect2" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=664446520]
+[node name="Heart2" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=664446520]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_w81ou")
 
-[node name="TextureRect3" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1644895459]
+[node name="Heart3" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1644895459]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_w81ou")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=193495393]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="TextureRect4" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1525452856]
 layout_mode = 2
+size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_8vqkf")
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=147100994]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
 text = "0"

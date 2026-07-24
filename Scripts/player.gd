@@ -4,7 +4,8 @@ class_name Player extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -350.0
 
-signal coin_signal
+signal coin_signal(lifes:int)
+signal hurt_signal
 
 var iframes = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -91,6 +92,7 @@ func _physics_process(delta: float) -> void:
 			#current_state = STATE.IDLE
 		
 		STATE.DIE:
+			$HitBox.disabled = true
 			$Animations.play("die")
 	
 	if life <= 0:
@@ -110,7 +112,8 @@ func _physics_process(delta: float) -> void:
 			#if collision.get_collider() == j:
 				#hurt(1)
 	
-	handle_gravity(delta)
+	if current_state != STATE.DIE:
+		handle_gravity(delta)
 	move_and_slide()
 
 func handle_gravity(delta):
@@ -127,6 +130,7 @@ func hurt(damage):
 	if iframes == false:
 		life -= damage
 		current_state = STATE.HURT
+		hurt_signal.emit(life)
 
 func coin():
 	coin_signal.emit()
@@ -151,3 +155,4 @@ func _on_timer_timeout() -> void:
 func _on_hurt_zone_body_entered(body: Node2D) -> void:
 	position = safe_position
 	life -= 1
+	hurt_signal.emit(life)

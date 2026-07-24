@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://xca1s6nw5hlw"]
 
-[ext_resource type="Script" uid="uid://ghsurjmbl6l4" path="res://Scripts/bricks_block.gd" id="1_ef6rv"]
+[ext_resource type="Script" uid="uid://ghsurjmbl6l4" path="res://Scripts/Objects/bricks_block.gd" id="1_ef6rv"]
 [ext_resource type="Texture2D" uid="uid://b6i47b4jlga1r" path="res://Assets/Objetos/staticObjects_.png" id="1_fktgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w81ou"]
